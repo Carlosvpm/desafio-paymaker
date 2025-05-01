@@ -2,23 +2,19 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Copiar arquivos de dependências
+RUN apk add --no-cache bash curl
+
 COPY package*.json ./
 COPY tsconfig.json ./
 COPY tailwind.config.js ./
 COPY postcss.config.js ./
 
-# Instalar dependências
 RUN npm install
 
-# Copiar o restante dos arquivos
 COPY . .
 
-# Construir a aplicação Next.js
-RUN npm run build
+RUN mkdir -p graphql/generated
 
-# Expor a porta
 EXPOSE 3000
 
-# Iniciar a aplicação em modo de desenvolvimento
 CMD ["npm", "run", "dev"] 

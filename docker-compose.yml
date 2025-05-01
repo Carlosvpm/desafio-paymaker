@@ -65,6 +65,7 @@ services:
       - NODE_ENV=development
     networks:
       - app-network
+    command: sh -c "chmod +x /app/scripts/start-with-codegen.sh && /app/scripts/start-with-codegen.sh"
 
 networks:
   app-network:

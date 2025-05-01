@@ -28,6 +28,8 @@ Este projeto é um CRUD (Create, Read, Update, Delete) completo de usuários uti
 │   ├── app/                 # Páginas da aplicação
 │   ├── components/          # Componentes React
 │   ├── graphql/             # Queries e tipos GraphQL
+│   │   └── generated/       # Tipos TypeScript gerados automaticamente
+│   ├── scripts/             # Scripts de automação e ferramentas
 │   ├── Dockerfile           # Docker para o frontend
 │   └── package.json         # Dependências do frontend
 └── docker-compose.yml       # Configuração do Docker Compose
@@ -55,6 +57,32 @@ Este projeto é um CRUD (Create, Read, Update, Delete) completo de usuários uti
 3. Acesse a aplicação:
    - Frontend: http://localhost:4000
    - GraphQL Playground: http://localhost:3000/graphql
+
+## Sincronização de Schema GraphQL
+
+O projeto possui uma funcionalidade de sincronização automática de tipos e schema GraphQL entre backend e frontend:
+
+### Como funciona
+
+1. Um script monitor (`frontend/scripts/schema-watcher.js`) observa continuamente o schema GraphQL do backend
+2. Quando detecta alterações, executa automaticamente o GraphQL Code Generator
+3. Os tipos TypeScript e hooks React atualizados são gerados no diretório `frontend/graphql/generated/`
+
+### Benefícios
+
+- **Consistência de tipo**: Garante que o frontend sempre esteja utilizando tipos que correspondem ao backend
+- **Desenvolvimento ágil**: Não precisa executar manualmente scripts de atualização de tipos
+- **Detecção precoce de erros**: Problemas de incompatibilidade de tipos são detectados imediatamente
+
+### Comandos disponíveis
+
+```bash
+# Gerar tipos a partir do schema atual (manual)
+cd frontend && npm run codegen
+
+# Monitorar alterações no schema (inicia automaticamente com o projeto)
+cd frontend && npm run schema:watch
+```
 
 ## Problemas Corrigidos
 
@@ -128,6 +156,7 @@ Se encontrar problemas ao iniciar os containers, tente as seguintes soluções:
 - Apollo Client: Cliente GraphQL para React
 - Tailwind CSS: Framework CSS utilitário
 - React Hook Form: Biblioteca para formulários em React
+- GraphQL Code Generator: Ferramenta para gerar tipos a partir do schema GraphQL
 
 ### Infraestrutura
 

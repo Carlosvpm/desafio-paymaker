@@ -1,3 +1,7 @@
+// Este arquivo fornece tipos padrão que serão usados até que o codegen seja executado
+// Após executar o codegen, os aplicativos devem importar tipos diretamente de './generated'
+
+// Tipos de fallback caso o codegen ainda não tenha sido executado
 export interface User {
   id: string;
   name: string;
