@@ -35,4 +35,8 @@ export class User {
   @Field()
   @Column({ unique: true, nullable: false})
   cpf: string;
+
+  @Field()
+  @Column({ default: false })
+  isAdmin: boolean;
 } 

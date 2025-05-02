@@ -1,7 +1,3 @@
-# ------------------------------------------------------
-# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
-# ------------------------------------------------------
-
 input CreateUserInput {
   email: String!
   name: String!
@@ -37,6 +33,7 @@ type User {
   email: String!
   id: ID!
   isActive: Boolean!
+  isAdmin: Boolean!
   name: String!
   phone: String
   updatedAt: DateTime!

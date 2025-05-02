@@ -14,6 +14,9 @@ COPY . .
 RUN chmod +x ./src/scripts/wait-for-db.sh && \
     sed -i 's/\r$//' ./src/scripts/wait-for-db.sh
 
+# Garantir que o schema GraphQL seja gerado durante o build
+RUN npm run generate-schema
+
 RUN npm run build
 
 EXPOSE 3000
