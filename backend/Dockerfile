@@ -11,11 +11,11 @@ RUN npm install
 
 COPY . .
 
-RUN chmod +x ./wait-for-db.sh && \
-    sed -i 's/\r$//' ./wait-for-db.sh
+RUN chmod +x ./src/scripts/wait-for-db.sh && \
+    sed -i 's/\r$//' ./src/scripts/wait-for-db.sh
 
 RUN npm run build
 
 EXPOSE 3000
 
-CMD ["/bin/sh", "./wait-for-db.sh", "mysql", "npm", "run", "start:prod"]
+CMD ["/bin/sh", "./src/scripts/wait-for-db.sh", "mysql", "npm", "run", "start:prod"]
