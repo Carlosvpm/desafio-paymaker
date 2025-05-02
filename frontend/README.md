@@ -1,64 +1,89 @@
-# Frontend - User CRUD
+# Frontend - CRUD de Usuários
 
-Este projeto é um frontend para o sistema de CRUD de usuários, utilizando Next.js, TypeScript, GraphQL e Apollo Client.
+Frontend para o sistema de CRUD de usuários desenvolvido com Next.js, TypeScript, Apollo Client e GraphQL.
 
-## Configuração de Ambientes
+## Configuração
 
-O projeto está configurado para rodar em dois ambientes diferentes:
+### Pré-requisitos
 
-### Ambiente Local
+- Node.js v16+
+- Backend rodando em http://localhost:3000 (ou configurado nas variáveis de ambiente)
 
-Quando você está desenvolvendo localmente e o backend está rodando diretamente na sua máquina:
-
-```bash
-npm run dev:local
-```
-
-### Ambiente Docker
-
-Quando você está usando Docker Compose para rodar todo o stack:
+### Instalação
 
 ```bash
-npm run dev:docker
+npm install
 ```
 
-## Sistema de Atualização de Schema GraphQL
+## Modos de Execução
 
-Este projeto implementa um sistema robusto para manter os tipos TypeScript sempre atualizados com o schema GraphQL do backend:
+### Desenvolvimento
+
+Executa a aplicação no modo de desenvolvimento:
+
+```bash
+npm run dev
+```
+
+Este comando gera automaticamente os tipos GraphQL antes de iniciar o servidor Next.js.
+
+### Build de Produção
+
+```bash
+npm run build
+npm run start
+```
+
+## Geração de Tipos GraphQL
+
+Os tipos TypeScript são gerados a partir do schema GraphQL do backend.
+
+### Geração Manual
+
+```bash
+npm run generate
+```
 
 ### Como Funciona
 
-1. **Monitoramento Contínuo**: O script `schema-watcher.js` monitora continuamente alterações no schema GraphQL do backend.
-2. **Detecção de Alterações**: Quando uma alteração é detectada, os tipos TypeScript são automaticamente regenerados.
-3. **Geração Manual**: Você também pode gerar os tipos manualmente usando o comando `npm run generate:types`.
+1. O comando `generate` conecta-se ao servidor GraphQL
+2. Obtém o schema atual
+3. Gera tipos TypeScript para queries, mutations e tipos do GraphQL
+4. Cria hooks React Apollo para operações definidas
 
-### Arquivos Importantes
+## Estrutura de Arquivos
 
-- `codegen.yml`: Configuração do GraphQL Code Generator
-- `scripts/schema-watcher.js`: Monitora alterações no schema do backend
-- `scripts/generate-types.js`: Gera tipos TypeScript a partir do schema GraphQL
-- `scripts/start-local.sh` e `scripts/start-docker.sh`: Scripts de inicialização para diferentes ambientes
+```
+frontend/
+├── app/                 # Pages e rotas da aplicação
+├── components/          # Componentes React
+├── graphql/
+│   ├── generated/       # Tipos e hooks gerados automaticamente
+│   └── queries.ts       # Definições de queries e mutations
+├── scripts/             # Scripts de automação
+├── codegen.ts           # Configuração do GraphQL Code Generator
+└── package.json         # Dependências e scripts
+```
 
-### Variáveis de Ambiente
+## Variáveis de Ambiente
 
-As variáveis de ambiente são definidas nos arquivos `.env.local` e `.env.development`:
+Configure estas variáveis em um arquivo `.env.local`:
 
-- `NEXT_PUBLIC_GRAPHQL_HOST`: Host do servidor GraphQL
-- `NEXT_PUBLIC_GRAPHQL_PORT`: Porta do servidor GraphQL
-- `NEXT_PUBLIC_GRAPHQL_URL`: URL completa do endpoint GraphQL
-- `NEXT_PUBLIC_SCHEMA_CHECK_INTERVAL`: Intervalo de verificação do schema (em milissegundos)
+```
+NEXT_PUBLIC_GRAPHQL_HOST=localhost
+NEXT_PUBLIC_GRAPHQL_PORT=3000
+NEXT_PUBLIC_GRAPHQL_URL=http://localhost:3000/graphql
+```
 
-## Como Depurar
+## Solução de Problemas
 
-Se você encontrar problemas com a geração de tipos ou atualização do schema:
+### Tipos GraphQL não estão atualizados
 
-1. Verifique se o backend está acessível na URL configurada
-2. Examine os arquivos de debug em `graphql/generated/schema-debug.json` e `schema.graphql`
-3. Execute manualmente a geração de tipos com `npm run generate:types`
+1. Verifique se o backend está acessível
+2. Execute manualmente `npm run generate`
+3. Verifique se há erros na geração de tipos
 
-## Fluxo de Desenvolvimento
+### Queries GraphQL com erro
 
-1. Inicie o backend: `cd backend && npm run start`
-2. Inicie o frontend: `cd frontend && npm run dev:local`
-3. O sistema automaticamente monitorará alterações no schema e regenerará os tipos
-4. Após qualquer alteração no backend que afete o schema GraphQL, os tipos serão atualizados automaticamente
+1. Verifique se os campos nas queries correspondem ao schema atual do backend
+2. Regenere os tipos com `npm run generate`
