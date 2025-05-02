@@ -40,7 +40,4 @@ export class User {
   @Column({ default: false })
   isAdmin: boolean;
 
-  @Field()
-  @Column({ default: false })
-  firstLogin: boolean;
 } 

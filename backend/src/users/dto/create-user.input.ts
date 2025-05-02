@@ -17,4 +17,9 @@ export class CreateUserInput {
   @IsOptional()
   @IsString()
   phone?: string;
+
+  @Field()
+  @IsNotEmpty()
+  @IsString()
+  cpf: string;
 } 

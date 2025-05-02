@@ -9,6 +9,7 @@ export interface User {
   phone?: string;
   createdAt: string;
   updatedAt: string;
+  cpf: string;
 }
 
 export interface UsersData {
@@ -23,6 +24,7 @@ export interface CreateUserInput {
   name: string;
   email: string;
   phone?: string;
+  cpf: string;
 }
 
 export interface CreateUserResponse {
@@ -34,6 +36,7 @@ export interface UpdateUserInput {
   name?: string;
   email?: string;
   phone?: string;
+  cpf?: string;
 }
 
 export interface UpdateUserResponse {

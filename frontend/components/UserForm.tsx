@@ -22,6 +22,7 @@ export default function UserForm({ user, onSubmit, isLoading }: UserFormProps) {
           name: user.name,
           email: user.email,
           phone: user.phone,
+          cpf: user.cpf,
         }
       : {},
   });
@@ -84,6 +85,21 @@ export default function UserForm({ user, onSubmit, isLoading }: UserFormProps) {
           type="text"
           className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm p-2 focus:border-indigo-500 focus:ring-indigo-500"
           {...register("phone")}
+        />
+      </div>
+
+      <div>
+        <label
+          htmlFor="cpf"
+          className="block text-sm font-medium text-gray-700"
+        >
+          CPF
+        </label>
+        <input
+          id="cpf"
+          type="cpf"
+          className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm p-2 focus:border-indigo-500 focus:ring-indigo-500"
+          {...register("cpf")}
         />
       </div>
 

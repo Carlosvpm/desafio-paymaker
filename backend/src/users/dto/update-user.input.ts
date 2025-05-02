@@ -21,4 +21,9 @@ export class UpdateUserInput {
   @IsOptional()
   @IsString()
   phone?: string;
+
+  @Field({ nullable: true })
+  @IsOptional()
+  @IsString()
+  cpf?: string;
 } 
