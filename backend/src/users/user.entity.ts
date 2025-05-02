@@ -21,10 +21,18 @@ export class User {
   phone?: string;
 
   @Field()
-  @CreateDateColumn()
+  @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date;
 
   @Field()
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: 'timestamp' })
   updatedAt: Date;
+
+  @Field()
+  @Column({ default: true })
+  isActive: boolean;
+
+  @Field()
+  @Column({ unique: true, nullable: false})
+  cpf: string;
 } 

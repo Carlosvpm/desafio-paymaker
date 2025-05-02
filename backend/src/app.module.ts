@@ -21,7 +21,7 @@ import { GraphQLFormattedError } from "graphql";
       password: process.env.DATABASE_PASSWORD || "password",
       database: process.env.DATABASE_NAME || "user_crud",
       entities: [join(__dirname, "**", "*.entity.{ts,js}")],
-      synchronize: true, // Não usar em produção
+      synchronize: true,
       logging: process.env.NODE_ENV === "development",
       autoLoadEntities: true,
     }),
