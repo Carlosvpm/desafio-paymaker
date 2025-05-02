@@ -39,4 +39,8 @@ export class User {
   @Field()
   @Column({ default: false })
   isAdmin: boolean;
+
+  @Field()
+  @Column({ default: false })
+  firstLogin: boolean;
 } 

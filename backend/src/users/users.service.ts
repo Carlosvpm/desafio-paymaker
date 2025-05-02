@@ -32,7 +32,6 @@ export class UsersService {
   async update(updateUserInput: UpdateUserInput): Promise<User> {
     const user = await this.findOne(updateUserInput.id);
     
-    // Atualizar apenas os campos fornecidos
     Object.assign(user, updateUserInput);
     
     return this.usersRepository.save(user);

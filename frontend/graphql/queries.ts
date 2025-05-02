@@ -9,6 +9,9 @@ export const GET_USERS = gql`
       phone
       createdAt
       updatedAt
+      isActive
+      isAdmin
+      cpf
     }
   }
 `;
@@ -22,6 +25,9 @@ export const GET_USER = gql`
       phone
       createdAt
       updatedAt
+      isActive
+      isAdmin
+      cpf
     }
   }
 `;
@@ -35,6 +41,9 @@ export const CREATE_USER = gql`
       phone
       createdAt
       updatedAt
+      isActive
+      isAdmin
+      cpf
     }
   }
 `;
@@ -48,6 +57,9 @@ export const UPDATE_USER = gql`
       phone
       createdAt
       updatedAt
+      isActive
+      isAdmin
+      cpf
     }
   }
 `;

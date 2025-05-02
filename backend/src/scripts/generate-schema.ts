@@ -5,11 +5,6 @@ import { printSchema } from "graphql";
 import * as fs from "fs";
 import * as path from "path";
 
-/**
- * Script para gerar o schema GraphQL a partir das entidades existentes
- * Este script tenta iniciar a aplicação NestJS para extrair o schema,
- * mas continua mesmo se houver problemas de conexão com o banco de dados
- */
 async function generateSchema() {
   try {
     console.log("Iniciando geração do schema GraphQL...");

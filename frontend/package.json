@@ -7,9 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "codegen": "graphql-codegen --config codegen.yml",
-    "codegen:watch": "graphql-codegen --config codegen.yml --watch",
-    "schema:watch": "node scripts/schema-watcher.js"
+    "codegen": "graphql-codegen",
+    "codegen:watch": "graphql-codegen --watch",
+    "schema:watch": "node scripts/schema-watcher.js",
+    "generate-schema": "graphql-codegen",
+    "dev:local": "sh scripts/start-local.sh",
+    "dev:docker": "sh scripts/start-docker.sh"
   },
   "dependencies": {
     "@apollo/client": "^3.8.0",
@@ -31,6 +34,7 @@
     "@types/react": "^18.2.12",
     "@types/react-dom": "^18.2.5",
     "autoprefixer": "^10.4.14",
+    "dotenv": "^16.5.0",
     "eslint": "^8.42.0",
     "eslint-config-next": "^14.0.0",
     "postcss": "^8.4.24",
